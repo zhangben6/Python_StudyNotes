@@ -1,0 +1,244 @@
+day15回顾:
+  生成器
+    动态生成数据
+  生成器分为两种:
+    生成器函数
+    生成器表达式
+
+生成器函数:
+  def myxxxx(....):
+      ...
+      yield 语句
+      ...
+  生成器函数的调用只会返回生成器
+  用next(it) 向迭代器(生成器) 要数据时,生成器函数才会
+  执行
+  生成器函数在执行过程中遇到yield会暂停(挂起),会将yield
+  生成的数据返回给next(it) 函数
+
+def myxrange(...):
+    ...
+
+for x in myxrange(1, 10, 3):
+   print(x)
+
+生成器表达式:
+  (x*2 for x in range(10))
+  [x*2 for x in range(10)]
+
+zip(iterable, *args) 函数
+enumerate(iterable, start=0) 函数  (0, "ABC")
+
+字节串bytes 和字节数组 bytearray
+
+字节 byte 
+  是由8个位组所存储单元
+
+字节串: 字面值
+   b''   b""    b''''''     b""""""
+   b'ABC'   b'123'   b'hello'    
+
+字节串和字节数组的构造函数
+  bytes()            bytearray()
+  bytes(可迭代对象)    bytearray (可迭代对象)
+  bytes(整数n)        bytearray(整数n)
+  bytes(字符串, 编码'utf-8')  bytearray(...)
+
+运算:
+  +  +=  *   *=
+  < > <= >= == !=
+  in / not in
+  索引和切片
+
+序列:
+  str, list, tuple, bytearray, bytes
+
+  len(x), max(x) ....
+
+day16笔记:
+文件 File
+   文件是用于存储数据的基本单dsa位
+   文件通常用来长期存储数据
+   文件中数据是以字节为单位进行顺序存储的
+
+文件的操作流程
+  1. 打开文件
+  2. 读/写文件
+  3. 关闭文件
+  注: 任何的操作系统,一个应用程序同时打开文件的数量
+      有最大数限制
+
+文件的打开函数
+  open(filename, mode='rt') 用于打开一个文件,返回
+            此用来操作此文件的文件流对象,如果打开失败,
+            则会触发OSError错误通知
+
+文件流对象的关闭方法
+  F.close()  关闭文件.释放系统资源
+
+示例见:
+  file_open.py
+
+以十六进制方式显示文件内容的命令:
+   $ xxd  文件名
+
+python中文本文件的读写操作:
+  文档参见:
+     python_base_docs_html/文件file.html
+读取文本文件的示例见:
+   file_read_text1.py
+
+练习:
+  自己写一个文件"info.txt", 内部存储一些文字信息如下:
+    张三,20,100
+    李四,18,98
+    小王,22,95
+  写程序将这些数据读取出来,并以如下格式打印在屏幕终端上
+    张三 今年 20 岁,成绩是: 100
+    李四 今年 18 岁,成绩是: 98
+    小王 今年 22 岁,成绩是: 95
+
+文件流对象的readlines方法示例见:
+   file_read_text2.py
+
+read方法的使用示例见:
+   file_read_text3.py
+
+python3的文本文件模式
+  模式字符: 't'
+  说明:
+    1. 对文本文件的读写操作需要用字符串(str)进行读写操作
+    2. 在读写过程中会自动进行编码(encode) 和 解码
+       (decode)操作
+    3. 以行为单位分隔,在python内部统一用'\n'作用换行符
+      进行分隔
+各操作系统的换行符:
+  Linux换行符: '\n'
+  Windows换行符: '\r\n'
+  新的Mac OS换行符: '\n'
+
+
+文本文件的写操作:
+  方法:
+    F.write(x)
+    F.writelines(列表)
+  模式字符串:
+     'w'
+     'x'
+     'a'
+  详见文档: python_base_docs_html/文件.html
+  示例见:
+    file_write_text.py
+  
+练习:
+   1. 写一个程序,输入很多人的姓名,年龄,成绩存于文件
+     'infos.txt'中
+     文件格式自己定义(建议用逗号(,)来分隔各信息)
+    完成输入后查看文件格式是不是您想要的格式
+    (用文本文件进行操作)
+
+    L = input_student()
+    def save_to_file(L, filename='infos.txt')
+        ..
+
+    save_to_file(L)
+
+
+二进制文件操作
+  二进制模式字符: 'b'
+  默认文件中存储的都是以字节(byte)为单位的数据,通常人
+    人为的格式
+  对二进制文件的读写需要用字符串(bytes) 或字节
+    数组(bytearray)进行操作
+
+  对于二进制文件读写方法都 需要用字节为单位进行操作
+    F.read(n)
+    F.readline()
+    F.readlines()
+    F.write(字节串)
+    F.writelines(字节串组成的列表)
+  示例见:
+    file_read_binary.py
+  二进制文件的写操作示例见:
+    file_write_binary.py
+  
+F.seek方法
+  作用:
+    设置文件的读写位置,返回新的读写位置
+  格式:
+    F.seek(偏移量, whence=相对位置)
+      偏移量
+        大于0代表向文件末尾方向移动
+        小于0代表向文件头方向移动
+      相对位置:
+        0 代表从文件头开始偏移
+        1 代表从当前读写位置开始偏移
+        2. 代表从文件尾开始偏移
+  示例见:
+    seek.py
+
+标准输入输出文件:
+  模块名:
+    sys
+  sys.stdin  标准输入文件(默认为键盘)
+  sys.stdout 标准输出文件(默认为屏幕终端)
+  sys.stderr 标准错误输出文件(默认为屏幕终端)
+  注: 标准文件不需要打开即可以使用,也不用手动关闭
+
+  示例见:
+    stdout.py
+
+
+
+
+十个汉字占多少个字节?
+
+汉字编码(只有两种)
+  国标系列:
+    GB18030(二字节或四字节编码, 27533个字)
+      GBK(二字节编码,20013个字)
+        GB2313(二字节编码,约7千多个字)
+    (Windows常用)
+  国际标准:
+    UNICODE(UNCODE16/UNICODE32)  <-> UTF-8
+    (Linux/Mac OS X/ IOS/ Android 常用)
+      UTF-8中:
+         英文ASCII (0x0 - 0x7F) 一字节
+         (0x80 - 0x3FF)         二字节
+         (0x400 - 0xFFFF)       三字节(中文在此区)
+
+python 编码字符串:
+  'gb2312'
+  'gbk'
+  'gb18030'
+  'utf-8'
+  'ascii'
+  ...
+
+  如:
+    s = "你好"
+    print(s.encode('gbk'))
+    print(s.encode('utf-8'))
+    print(s.encode('ascii'))#出错,"你好"不在ascii内
+
+
+
+编码注释:
+  在源文件中,第一行或第二行写入的如下内容是编码注释
+  # -*- coding:gbk -*- 
+  或 
+  # -*- coding:utf-8 -*-
+
+
+
+练习:
+  1. 写程序实现复制文件的功能
+     要求:
+       1. 要考虑超大文件问题
+       2. 要能复制二进制文件(如:图片等)
+       3. 要考虑关闭文件
+
+  2.改写原学生信息管理程序,要求加入如下两个功能:
+    | 9) 从文件中读取数据(si.txt)  |
+    | 10) 保存信息到文件(si.txt)   |
+

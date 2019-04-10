@@ -1,0 +1,209 @@
+王伟超
+  wangweichao@tedu.cn
+1、三大操作系统
+  1、Unix
+	  Mac OS 、Solaris
+	2、Linux
+	  RedHat、CentOS、Ubuntu 16.04(教学环境版本)
+	3、Windows
+    win7、win8、win10
+2、VMware Workstation(测试、学习)
+  1、功能强大的桌面虚拟计算机软件
+	2、开发、测试、部署应用程序的利器
+	3、教学(开发、测试部署)环境安装
+	  1、下载VMware Workstation安装包并安装
+    2、下载Linux操作系统镜像文件.iso(纯净版) ：Ubuntu 16.04
+    3、打开VMware Workstation,文件 -> 新建虚拟机(组装电脑)
+		4、CD/DVD  -> 插入光盘(.iso文件)
+		5、开启此虚拟机 -> 通电开机
+		6、安装完成后安装一系列的软件、模块
+3、Linux基础
+  1、终端 ：用来输入Linux命令
+	  1、点击图片
+		2、点击 "搜索计算机" -> gnome-terminal
+	2、目录树
+	  1、根 / ：代表文件系统的起始位置
+		2、路径 ：代表一个文件/目录的字符串
+				      /home/tarena/AID09
+	3、Linux命令基本格式
+	  命令名 [选项] [参数]  #[]代表里面内容可有可无
+4、Linux命令
+  1、pwd ：显示当前所在路径
+	2、ls ：显示目录的详细内容(文件、子目录)
+	  1、常用选项
+		  ls -l ：以列表(长格式)显示文件、目录详细信息
+			ls -a ：显示所有(包含隐藏) 以 . 开头为隐藏
+			ls -la
+			ls -al
+	3、路径
+	  1、绝对路径
+      以 / 开始的路径
+		2、相对路径
+      不以 / 开始的路径
+			  .  当前目录
+				.. 上一级目录
+				~  用户主目录/家目录(/home/tarena)
+		3、主目录/家目录
+		  1、超级用户 ：root
+			2、创建用户时会自动在/home下创建1个和用户名同名的目录,为此用户主目录
+			  用户名 ：tarena   主目录 ：/home/tarena
+				用户名 ：zhanshen 主目录 ：/home/zhanshen
+  4、cd ：切换目录(路径)
+	  1、用法
+		  cd 路径(绝对、相对路径都可以)
+			  cd /home/tarena 、cd /home/tarena/aid1809
+				cd aid1809 #前提是现在主目录下
+		2、cd 直接回车 ：回到用户主目录/home/tarena
+		   cd ~ : 回到用户主目录
+		   cd - : 从最近访问的两个目录之间来回切换
+		3、TAB键自动补齐命令/路径(熟练使用!!!!!)
+		  1、速度快
+			2、路径不会错,TAB不出来说明路径有问题
+		4、练习
+		  1、切换到目录 ：/home/tarena/anaconda3/bin
+			  cd /home/tarena/anaconda3/bin/
+			2、查看当前所在路径
+			  pwd
+			3、以列表形式列出当前目录所有内容(包含隐藏)
+			  ls -la
+      4、切换到当前目录的上一级目录,即 
+			：/home/tarena/anaconda3
+			  cd ..
+			5、切换到/etc目录,查看/etc下有哪些内容
+			  cd /etc/
+			6、直接切换到用户主目录
+			  cd
+  5、mkdir ：创建1个或n个目录(文件夹)
+	  1、格式 ：mkdir 目录名1 目录名2 ...
+		2、常用选项
+		  -p ：逐层创建目录
+			  mkdir -p One/Two/Three/Go
+        # 如果中间目录不存在,直接创建
+	6、touch
+	  1、作用
+		  1、文件不存在 -> 创建
+			2、文件存在 -> 用系统时间更新文件修改时间
+	  2、格式 ：touch 文件名1 文件名2 文件名3 ...
+		3、练习
+		  1、在用户主目录下创建目录 A1/B1/C1/D1
+			  cd
+				mkdir -p A1/B1/C1/D1
+			2、在D1下创建文件 file1.txt  file2.txt
+			  cd A1/B1/C1/D1
+				touch file1.txt file2.txt
+			3、在C1下创建文件 file3.txt  file4.txt
+			  cd ..
+				touch file3.txt file4.txt
+			4、切换到A1目录,查看当前所在路径
+			  cd ../../
+				pwd
+			5、直接切换到用户主目录
+			  cd
+  7、技巧类
+	  1、自动补齐 ：TAB键
+		2、翻出历史执行命令 ：键盘 上、下键
+		3、清屏 ：Ctrl + l  或者 clear
+		4、终止命令执行 ：Ctrl + c
+		5、终端字体放大 ：Ctrl + Shift + "+"
+		6、终端字体缩小 ：Ctrl + "-"
+  8、练习
+	  1、一条命令创建：
+		  /home/tarena/目录下创建目录 ：广东省
+			在 广东省 下创建目录 ：深圳市
+			在 深圳市 下创建目录 ：宝安区
+		2、在 宝安区 下创建文件 ：福永小姐姐
+		3、在用户主目录下创建如下结构：
+		             Python
+								   |
+				+-------+-------+------+
+				|       |       |      |
+     Shanghai Wuchang Chengdu Shijiazhuang
+       目录     目录    目录   目录
+  9、rm ：删除文件/目录
+	  1、rm 选项 文件/目录
+		  -r ：删除全部文件/目录
+			-f ：强制删除,不给任何提示
+      -i ：删除前给提示(y代表yes,n代表no)
+
+			rm -rf 文件名/目录名
+5、文本编辑器vi/vim
+  1、格式 ：vi 文件名
+	2、vi的三种工作模式
+	  1、浏览模式 ：启动时进入,不能编辑文本
+		2、插入模式(a/i/o) ：编辑文本
+		3、命令行模式(ESC -> shift + :) ：保存退出..
+	3、文本写入步骤
+	  1、vi 文件名
+		2、按 a/i/o ：编辑文本
+		3、按 ESC 
+		4、按 shift + :   --> 命令行模式
+		5、wq ：保存退出
+		   q! ：不保存直接退出
+			 w  ：保存
+6、作业1
+  1、在用户主目录下创建文件 ：tarena.txt
+	2、在tarena.txt中写入如下内容保存退出：
+	  仰天大笑出门去,我辈岂是蓬蒿人
+		rm -rf删除后不可恢复,使用时要小心进去
+		常用Linux操作系统：Ubuntu、CentOS、RedHat
+		Linux中把文件夹叫做目录
+		mkdir -p为递归创建目录
+  3、查看tarena.txt的内容
+	  cat tarena.txt
+	4、切换到当前路径的上一级目录
+	5、查看当前所在路径
+	6、直接切换到用户主目录
+7、作业2
+  1、在用户主目录下创建目录 ：AID09
+	2、在AID09下创建三个目录：
+	  Linux
+		Pbase
+		AI
+	3、在Linux目录下创建2个目录 ：day01、day02
+	4、在day01下创建文件 ：day01.txt
+	5、在Pbase下创建3个文件夹：
+	  day01、day02、day03
+	6、在day03目录下创建 day03.txt
+	7、删除Pbase目录和Linux下的day01目录
+	8、切换到用户主目录
+  
+http://code.tarena.com.cn
+用户名：tarenacode
+密码：code_2013
+路径：/AIDCode/aid1809/
+
+
+
+
+
+
+			
+		
+
+			
+
+
+
+			
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
