@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.c1{
+			color: red;
+			font-size: 32px;		
+		}
+		/*标签选择器与类选择器组合使用,匹配类型为c1的div*/
+		div.c1{
+			width: 200px;
+			height: 200px;
+			background-color:pink;
+		}
+		.c2{
+			background-color:orange;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="c1">div</div>
+	<p class="c1 c2">段落</p>
+	<span class="c1 c2">span</span>
+</body>
+</html>
