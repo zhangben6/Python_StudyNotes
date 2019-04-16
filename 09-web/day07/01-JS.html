@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript">
+		alert("head中嵌套的JS代码");
+	</script>
+</head>
+<body>
+	<h1 onclick="document.write('hahaha');">点我</h1>
+	<script type="text/javascript">
+		console.log("body末尾的脚本标签");
+		document.write("<h2>body末尾动态添加</h2>");
+	</script>
+</body>
+</html>

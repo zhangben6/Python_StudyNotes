@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		
+		//1. toString() 转换字符串
+		var arr1 = [1,2,3,"6"];
+		var r1 = arr1.toString();
+		console.log(r1);
+		//2. join()
+		var r2 = arr1.join();
+		console.log(r2);
+		var r3 = arr1.join('-');
+		console.log(r3);
+		//3. reverse()
+		var r4 = arr1.reverse();
+		console.log(r4,arr1);
+		//4. sort()
+		var arr2 = [5,50,7,100];
+		arr2.sort();
+		console.log(arr2);
+		function sortASC(a,b) {
+			return a-b;
+		}
+		arr2.sort(sortASC);
+		console.log(arr2);
+		//自定义降序
+		arr2.sort(function (a,b){
+			return b-a;
+		});
+		console.log(arr2);
+
+		//5. push()
+		var len1 = arr2.push('elem1','hello',567);
+		console.log(len1,arr2);
+
+		//6. pop()
+		var res1 = arr2.pop();
+		console.log(res1,arr2);
+
+		//7. unshift(data)
+		var len2 = arr2.unshift(1,2,3);
+		console.log(len2,arr2);
+		//8. shift()
+		var res2 = arr2.shift();
+		console.log(res2,arr2);
+
+		//9. forEach()
+		//每取出一个元素,将元素和其对应的下标,传入函数,自动执行
+		arr2.forEach(function (elem,index){
+			console.log(elem,index);
+		});
+		arr2.forEach(function (elem){
+			console.log(elem);
+		});
+
+		function f1(a,b) {
+			//函数形参相当于函数内部的局部变量
+			console.log(a,b);
+		}
+		f1(10);
+		function f2(a) {
+			console.log(a);
+		}
+		f2(10,100);
+
+
+
+
+
+
+
+
+
+
+
+
+		function rever2(){
+			var arr = [1,2,3];
+			var newArr = [];
+			for(var i = arr.length-1;i >=0; i --){
+				newArr[newArr.length] = arr[i];
+			}
+			//[3,2,1]
+			arr = newArr;
+			return arr;
+		}
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

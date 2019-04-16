@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var a = 100;
+		function f1(){
+			var b = 300;
+			var a = 500;
+			console.log(a);
+			console.log(b);//300
+
+			function f2() {
+				var b = 1000;
+				console.log(a);
+				console.log("f2"+b); //1000
+			}
+			//局部函数,只在当前作用域中可以访问
+			f2();
+		}
+		console.log(a);
+		// f1();
+		function f2() {
+			age = 20;
+		}
+		f2(); //定义变量
+		console.log(age);
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

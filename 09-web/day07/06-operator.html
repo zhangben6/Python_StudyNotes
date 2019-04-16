@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		//1. 字符串的+表示拼接
+		//2. 非字符串类型数学运算,统一先转number
+		var s1 = 10 + true;
+		var s2 = '10' / 5; //2
+		var s3 = '10a' / 5;//Number('10a')
+		console.log(s2,s3);
+		var s5 = 5 / 2; //2.5
+		var s6 = 5 % 2; //1
+
+		//自增自减
+		var a = 10;
+		a ++;
+		++ a;
+		console.log(a); //a=12
+		var r1 = a ++; //r1? a?
+		console.log(r1,a); //12,13
+		var r2 = ++ a; //r2? a?
+		console.log(r2,a);//14,14
+
+		var b = 10;
+		var r3 = ++b +100;
+		console.log(r3,b);
+		r4 = b+++a;
+		console.log(r4);
+
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
