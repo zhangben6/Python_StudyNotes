@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		h1{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+	</style>
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			$('h1').onclick = function (evt) {
+				// console.log(evt);
+				console.log("offsetX :",evt.offsetX,"offsetY :",evt.offsetY);
+				console.log("clientX :",evt.clientX,"clientY :",evt.clientY);
+				console.log("screenX :",evt.screenX,"screenY :",evt.screenY);
+			};
+			onkeydown = function (evt){
+				console.log("keydown :",evt.which);
+			};
+			onkeypress = function(evt){
+				console.log("keypress :",evt.which,evt.key);
+			};
+		}
+	</script>
+</head>
+<body>
+	<h1>一级标题</h1>
+</body>
+</html>

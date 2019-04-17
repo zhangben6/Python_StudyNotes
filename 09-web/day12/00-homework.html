@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		/*
+		// window提供的方法
+		alert();
+		prompt();
+		confirm();
+		window.close();
+		var timer = setInterval(function (){},1000);
+		clearInterval(timer);
+		var timerId = setTimeout();
+		clearTimeout(timerId);
+
+		screen.width;
+		screen.availWidth;
+
+		history.length;
+		history.back();
+		history.forward();
+		history.go(n);
+
+		location.href;
+		window.location.href = "http://www.baidu.com";
+		location.reload();
+
+		//元素节点 属性节点 文本节点 文档节点 注释节点
+		*/
+
+	</script>
+</head>
+<body>
+	<h1 class="c1" id="d1">一级标题</h1>
+	<h1 class="c1">一级标题</h1>
+	<h1 class="c1">一级标题</h1>
+	<h1 class="c1">一级标题</h1>
+	<input type="radio" name="sex" value="male">
+	<input type="radio" name="sex" value="female">
+
+	<input type="text" name="uname">
+	<span>长度在6-18位之间</span>
+	<br>
+	<button onclick="validateName()">验证</button>
+
+	<script type="text/javascript">
+		//获取元素节点
+		var elems1 = document.getElementsByTagName('h1');
+		var h1 = elems1[0];
+		var elems2 = document.getElementsByClassName('c1');
+		var elem = document.getElementById('d1');
+		var elems3 = document.getElementsByName('sex');
+		var radio = elems3[0];
+		//操作元素节点的内容
+		h1.innerHTML = "innerHTML";
+		h1.innerText = "innerText";
+		radio.value;
+		//操作元素节点的标签属性
+		// h1.setAttribute("","");
+		h1.getAttribute("id");
+		h1.removeAttribute('class');
+		h1.id = "d2";
+		h1.id = null;
+
+		//操作样式
+		h1.style.fontSize = "20px";
+		//<h1 style="width:200px;height:200px;text-align:center;">
+		h1.style = "width:200px;height:200px;text-align:center;";
+
+		function validateName (){
+			var text = document.getElementsByName('uname')[0].value;
+			var span = document.getElementsByTagName('span')[0];
+
+			if (text.length >= 6 && text.length <= 18) {
+				span.innerText = "用户名合法";
+				span.style.color = "green";
+			}else{
+				span.innerText = "用户名不合法";
+				span.style.color = "red";
+			}
+
+		}
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

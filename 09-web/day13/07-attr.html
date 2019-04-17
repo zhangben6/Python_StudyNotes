@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="jquery-1.11.3.js"></script>
+ </head>
+ <body>
+	<h1>一级标题</h1>
+	<input type="radio" name="" value="male" checked>
+	<script>
+		$('h1').attr('id','d1');
+		$('h1').prop('class','c1');
+
+		console.log($('input').attr('checked'));
+		console.log($('input').prop('checked'));
+
+		$('h1').removeAttr('id');
+
+	</script>
+ </body>
+</html>
