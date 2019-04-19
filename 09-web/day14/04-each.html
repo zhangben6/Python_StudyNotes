@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="jquery-1.11.3.js"></script>
+  <script>
+	var arr = [123,234,435,456];
+	$(arr).each(function (index,elem){
+		//遍历数组时,传入两个数据,分别表示下标和元素
+		console.log(elem,index);
+	});
+	$(function (){
+		$('p').each(function (){
+			//获取当前的节点对象 this
+			console.log(this);
+			$(this).html();
+		});
+	});
+  </script>
+ </head>
+ <body>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+ </body>
+</html>

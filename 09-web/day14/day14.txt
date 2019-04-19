@@ -1,0 +1,132 @@
+复习
+1. 引入jquery文件
+	<script src=""></script>
+2. $/jQuery  jquery对象
+	 $()	     工厂函数
+3. 获取元素
+	$('selector') -> jquery对象
+	jquery对象与DOM互相转换:
+		1. dom->jquery : $(div)
+		2. jquery->dom : $('div')[0] / $('div').get(0)
+4. 选择器
+	tag id class group
+	后代 自带 相邻兄弟选择器(+) 通用兄弟选择器(~)
+	:first :last :eq(index) :lt(index) :gt(index) :odd :even :not()
+	:first-child :last-child :nth-child(n)
+	[attrName] [attrName='value'] ^= $= != *=
+5. 操作元素
+	1. 操作内容
+		html("")
+		text("")
+		val("")
+	2. 操作标签属性
+		attr('attrName','value') //checked
+		prop('attrName','value') //true
+		removeAttr('attrName')
+	3. 操作元素样式
+		1. 匹配类选择器
+			addClass('className')
+			removeClass('className')
+			toggleClass('className') 切换类名,匹配样式
+		2. 行内样式
+			css('attrName')
+			css('attrName','value')
+			css({
+				"width":"200px",
+				"height":"200px"
+			})
+--------------------------------------------------------
+day14
+1. 通过层次关系获取节点
+	1. parent()
+		获取父节点
+	2. parents('selector')
+		获取满足指定选择器的祖先元素,如果省略参数,返回所有祖先元素
+	3. children()/children('selector')
+		获取所有的直接子元素
+		获取所有满足选择器的直接子元素
+	4. find('selector')
+		获取满足选择器的后代元素,包含直接与间接
+		参数省略的话,查找不到
+	5. next()/next('selector')
+		获取下一个兄弟元素
+		获取下一个兄弟元素,要求满足selector,否则查找失败
+	6. prev()/prev('selector')
+		获取上一个兄弟元素
+		获取上一个兄弟元素,要求满足selector,否则查找失败
+	7. siblings()/siblings('selector')
+		获取所有兄弟元素
+		获取满足选择器的所有兄弟元素
+2. 节点创建,添加和删除
+	1. 创建节点
+		语法1 :
+			var $div = $('<div></div>');
+			$div.html();
+			$div.attr();
+			$div.css();
+		语法2 :
+			//<h1 id='d1' style='color:red;'>一级标题</h1>
+			var $h1 = $("<h1 id='d1' style='color:red;'>一级标题</h1>")
+	2. 添加节点
+		1. 作为子元素添加
+			$obj.append($new)
+				将 $new 作为 $obj 的最后一个子元素添加
+			$obj.prepend($new)
+				将 $new 作为 $obj 的第一个子元素添加
+	  2. 作为兄弟元素添加
+			$obj.after($new)
+				将 $new 作为 $obj 的下一个兄弟元素添加
+			$obj.before($new)
+				将 $new 作为 $obj 的上一个兄弟元素添加
+	3. 删除节点
+		$obj.remove();
+		删除$obj
+3. 事件绑定
+	1. 等待文档加载完毕
+		1. $(document).ready(function (){
+				//等待文档加载完毕后执行
+			 });
+		2. $().ready(function (){
+				//等待文档加载完毕后执行
+			 });
+		3. $(function (){
+				//等待文档加载完毕后执行
+			 });
+		注意 :
+			原生onload事件不能重复书写,会被覆盖,只执行最后一次onload
+			书写的代码
+			jquery中的ready方法,可以重复使用,相关函数会从上至下依次
+			执行,不会产生覆盖问题
+	2. 事件绑定方式
+		1. $obj.bind("事件名称",function)
+			参数 :
+				1. 事件名称 : 省略on前缀
+				2. function : 事件触发后执行的操作
+			例 :
+				$obj.bind('click',function (){});
+		2. $obj.事件名称(function)
+			事件名称作为方法名,直接绑定,省略on前缀
+			例 :
+				$obj.click(function (){});
+
+	3. 事件对象
+		事件对象的获取和属性操作与原生JS一致
+		例 :
+			$obj.click(function (evt){
+				//获取事件对象(参数接收)
+				console.log(evt);
+				//属性访问
+				console.log(evt.offsetX);
+			})
+	4. 遍历数组
+		each(function (){
+		
+		});
+		遍历数组或集合,每取出一个元素,自动执行函数
+
+
+
+	
+
+
+
