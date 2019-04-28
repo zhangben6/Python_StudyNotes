@@ -1,0 +1,76 @@
+Day04回顾
+1、lxml使用流程
+  1、from lxml import etree
+  2、parseHtml = etree.HTML(html)
+  3、rList = parseHtml.xpath('')
+2、xpath匹配规则
+  1、获取节点对象 ： //div[@class="tiger"]
+  2、获取属性值   ： //div[@class="a"]//a/@src
+  3、函数 ：//div[contains(@id,"aa")]//a/@href
+3、xpath高级
+  1、基准xpath表达式(节点对象列表)
+  2、for r in [节点对象列表]:
+         username = parseHtml.xpath('./....')
+********************************************
+1、Ajax动态加载网站数据抓取
+  1、特点 ：滚动鼠标滑轮时加载
+  2、抓包工具(F12) ：QueryString
+2、豆瓣电影(Ajax)数据抓取
+  1、网址 ：豆瓣电影-排行榜-剧情
+  2、目标 ：电影名称、评分
+  3、F12/抓包工具
+    滚动鼠标滑轮抓包,找到2个数据
+      1、Request URL(Raw) ：GET的地址
+      2、QueryString(WebForms) : 发送的数据
+  4、代码实现
+    type: 11
+    interval_id: 100:90
+    action: 
+    start: 100
+    limit: 20
+3、selenium+phantomjs/Chrome强大网络爬虫组合
+  1、selenium
+    1、定义 ：Web自动化测试工具,用于Web自动化测试
+    2、特点
+      1、可运行在浏览器,根据指定命令操作浏览器,让浏览器自动加载页面
+      2、只是工具,必须与第三方浏览器结合使用
+    3、安装selenium
+      Anaconda Prompt: conda install selenium
+  2、phantomjs浏览器
+    1、定义 ：无界面浏览器(无头浏览器)
+    2、特点 ：把网站在内存进行页面加载,运行高效
+    3、安装
+      1、下载对应安装包(.exe),将文件放到Python安装目录的Scripts目录下
+        D:\Anaconda3\Scripts
+  3、chromedriver安装
+    1、下载网址 https://chromedriver.storage.googleapis.com/index.html
+    2、安装
+      1、查看本机Chrome浏览器版本
+        设置-帮助-关于Google Chrome
+      2、下载对应版本的chromedriver.exe(notes.txt)
+    3、拷贝到Python安装目录的Scripts目录下
+    4、cmd终端 ：chromedriver -v
+  4、示例代码1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
