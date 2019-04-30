@@ -1,0 +1,41 @@
+目标：
+  打开浏览器输入:www.tiger.com进入django项目首页
+1、概念
+  1、Django项目(Web应用)
+  2、Web服务
+     1、nginx ：高并发处理的好
+     2、apache：稳定
+        LAMP ：Linux、Apache、MySQL、Python/Php
+	LNMP ：Linux、Nginx、MySQL、Python/Php
+     3、uwsgi
+        是Web服务与Web框架之间简单而通用的接口
+2、项目部署(nginx+uwsgi+django)
+  1、部署环境准备
+    1、确保django项目能够运行
+    2、安装nginx
+       1、安装 ：sudo apt-get install nginx
+       2、启动 ：sudo /etc/init.d/nginx restart
+       3、验证 ：打开浏览器,输入127.0.0.1:80-->出现Welcome to Nginx界面
+    3、安装uwsgi(必须使用pip3安装)
+       1、安装 ：sudo pip3 install uwsgi
+       2、验证 ：
+
+
+1、cd /home/tarena/project/setuptools-33.1.1
+2、sudo python3 setup.py install 
+3、sudo apt-get autoremove python3-pip
+4、sudo python3 easy_install.py pip
+5、sudo apt-get install python3-pip
+## 执行pip3 list会报错 ##
+   错误：cannot import name 'main'
+6、sudo vi /usr/bin/pip3
+   把原来的3行代码注释掉,添加新代码后保存退出：
+   from pip import __main__
+ 
+   if __name__ == '__main__':
+        sys.exit(__main__._main())
+7、pip3 list
+
+
+
+
