@@ -1,332 +1,177 @@
-Day02»Ø¹Ë
-1.Êı¾İÀàĞÍ
-  1.ÊıÖµÀàĞÍ
-  2.×Ö·ûÀàĞÍ
-  3.Ã¶¾ÙÀàĞÍ
-    1.×Ö¶ÎÃû enum(Öµ1,Öµ2)
-    2.×Ö¶ÎÃû set(Öµ1,Öµ2)
-  4.ÈÕÆÚÊ±¼äÀàĞÍ
-    1.date
-    2.time
-    3.datetime  # ²»¸øÖµÄ¬ÈÏNULL
-    4.timestamp # ²»¸øÖµÄ¬ÈÏ·µ»ØÏµÍ³µ±Ç°Ê±¼ä
-2.ÈÕÆÚÊ±¼äº¯Êı
-  1.NOW()
-  2.CURDATE()
-  3.CURTIME()
-  4.YEAR(×Ö¶ÎÃû)
-  5.DATE(×Ö¶ÎÃû)
-  6.TIME(×Ö¶ÎÃû)
-3.ÈÕÆÚÊ±¼äÔËËã
-  select ... from ±íÃû
-  where ×Ö¶ÎÃû ÔËËã·û(now()-interval Ê±¼ä¼ä¸ôµ¥Î»);
-  1 day | 2 day | 3 month
-4.±í×Ö¶Î²Ù×÷
-  1.Ìí¼Ó(add)
-    alter table ±íÃû add ×Ö¶ÎÃû Êı¾İÀàĞÍ first|after .
-  2.ĞŞ¸Ä(modify)
-    alter table ±íÃû modify ×Ö¶ÎÃû ĞÂÊı¾İÀàĞÍ;
-  3.É¾³ı(drop)
-    alter table ±íÃû drop ×Ö¶ÎÃû;
-  4.±íÖØÃüÃû(rename)
-    alter table ±íÃû rename ĞÂ±íÃû;
-  5.±í×Ö¶ÎÖØÃüÃû(change)
-    alter table ±íÃû change Ô­Ãû ĞÂÃû Êı¾İÀàĞÍ;
-5.±í¼ÇÂ¼¹ÜÀí
-  1.É¾³ı(delete)
-    delete from ±íÃû where Ìõ¼ş;
-  2.ĞŞ¸Ä(update)
-    update ±íÃû set ×Ö¶Î1=Öµ1,×Ö¶Î2=Öµ2 where Ìõ¼ş;
-6.×Ü½á
-         ±í×Ö¶Î               ±í¼ÇÂ¼
-  Ôö       add                insert into ±íÃû
-  É¾       drop               delete from ±íÃû
-  ¸Ä       modify             update ±íÃû set ...
-  ²é       desc               select * from ±íÃû ...
-7.ÔËËã·û
-  1.ÊıÖµ&&×Ö·û&&Âß¼­±È½Ï
-    1.ÊıÖµ : > >= < <= = !=
-    2.×Ö·û : = !=
-    3.Âß¼­ : and  or
-  2.·¶Î§ÄÚ±È½Ï
-    1.between Öµ1 and Öµ2
-    2.in(Öµ1,Öµ2,Öµ3)
-    3.not in(Öµ1,Öµ2,Öµ3)
-  3.¿Õ ·Ç¿Õ
-    1. is NULL
-    2. is not NULL
-  4.Ä£ºı±È½Ï
-    ×Ö¶ÎÃû like "%_"
-8.SQL²éÑ¯
-  1.order by ×Ö¶ÎÃû ASC/DESC
-  2.limit
-    1. limit n
-    2. limit m,n
-    3. ·ÖÒ³
-      Ã¿Ò³ÏÔÊ¾mÌõ¼ÇÂ¼,ÏÔÊ¾µÚnÒ³µÄÄÚÈİ
-      limit (n-1)*m,m
-  4.¾ÛºÏº¯Êı
-    avg(..) sum(...) max(...) min(...)
-    count(...)
-    ## ¿ÕÖµNULL²»»á±»Í³¼Æ
-***********************************
-Day03±Ê¼Ç
-1. SQL²éÑ¯
-  1.×Ü½á
-    3. select .... ¾ÛºÏº¯Êı from ±íÃû
-    1. where ...
-    2. group by ...
-    4. having ...
-    5. order by ...
-    6. limit ...;
-  2. ¾ÛºÏº¯Êı
-    1. ·ÖÀà
-      avg(×Ö¶ÎÃû)
-      sum(×Ö¶ÎÃû)
-      max(×Ö¶ÎÃû)
-      min(×Ö¶ÎÃû)
-      count(×Ö¶ÎÃû) : Í³¼Æ¸Ã×Ö¶Î¼ÇÂ¼µÄ¸öÊı
-    2.¹¥»÷Á¦×î´óÖµÊÇ¶àÉÙ?
-      select max(gongji) from sanguo;
-    3.Í³¼Æid nameÁ½¸ö×Ö¶Î·Ö±ğÓĞ¼¸Ìõ¼ÇÂ¼?
-      select count(id),count(name) from sanguo;
-      # ¿ÕÖµNULL²»»á±»Í³¼Æ,""»á±»Í³¼Æ
-    4.Í³¼ÆÊñ¹úÓ¢ĞÛÖĞ¹¥»÷Á¦´óÓÚ200µÄÓ¢ĞÛµÄÊıÁ¿
-      select count(id) as number from sanguo where country="Êñ¹ú" and gongji>200;
-  3. group by : ¸ø²éÑ¯µÄ½á¹û½øĞĞ·Ö×é
-    1. Ê¾Àı
-      1. ¼ÆËãÃ¿¸ö¹ú¼ÒµÄÆ½¾ù¹¥»÷Á¦
-         select country,avg(gongji) from sanguo 
-	 group by country;
-        ÏÈ·Ö×é    ÔÙ¾ÛºÏ      ×îºóÈ¥ÖØ
+ysql day2ã€€åŸºç¡€çŸ¥è¯†ç¬”è®°  2018/11/5
+===============================================================================================
 
-	  Êñ¹ú
-	  Êñ¹ú
-	  Êñ¹ú       578.25      Êñ¹ú
-	  Îº¹ú
-	  Îº¹ú       378.25      Îº¹ú
-	  Îâ¹ú       178.25      Îâ¹ú
-      2. ²éÕÒËùÓĞ¹ú¼ÒµÄÄĞÓ¢ĞÛÖĞ,Ó¢ĞÛÊıÁ¿×î¶àµÄ¹ú¼ÒÇ°2Ãû,ÏÔÊ¾¹ú¼ÒÃû³ÆºÍÓ¢ĞÛÊıÁ¿
+1.select æŸ¥è¯¢
+        select *
+        select å­—æ®µ
+        select èšåˆå‡½æ•° where...
+
+        1.èšåˆå‡½æ•°
+            æœ€å¤§å€¼,æœ€å°å€¼,æ±‚å’Œ,å¹³å‡å€¼,è®¡æ•°
+            1)åˆ†ç±»
+                avg(å­—æ®µå)
+                sum(å­—æ®µå)
+                max(å­—æ®µå)
+                min(å­—æ®µå)
+                count(å­—æ®µå):ç»Ÿè®¡è¯¥å­—æ®µè®°å½•çš„ä¸ªæ•°
+            2)æ”»å‡»åŠ›æœ€å¤§å€¼æ˜¯å¤šå°‘?
+                select max(gongji) from sanguo;
+            3) ç»Ÿè®¡id name è¿ä¸ªå­—æ®µåˆ†åˆ«æœ‰å‡ æ¡è®°å½•?
+                select count(id),count(name) from sanguo;
+                # ç©ºå€¼nullä¸ä¼šè¢«ç»Ÿè®¡,""ä¼šè¢«ç»Ÿè®¡
+            4)ç»Ÿè®¡èœ€å›½æ”»å‡»åŠ›å¤§äº200çš„è‹±é›„æ•°é‡;
+                select count(id) as number from sanguo where country="èœ€å›½" and gongji>200;
+        2.group by :ç»™æŸ¥è¯¢çš„ç»“æœè¿›è¡Œåˆ†ç»„
+            1).è®¡ç®—æ¯ä¸ªå›½å®¶çš„å¹³å‡æ”»å‡»åŠ›
+                èœ€å›½    387
+                é­å›½    260
+                å´å›½    180
+                select country,avg(gongji) from sanguo group by country;
+                æ‰§è¡Œæµç¨‹ï¼šã€€å…ˆåˆ†ç»„,å†èšåˆ,æœ€åå»é‡
+            2).æŸ¥çœ‹æ‰€æœ‰å›½å®¶çš„ç”·è‹±é›„ä¸­,è‹±é›„æ•°é‡æœ€å¤šçš„å›½å®¶å‰2å,æ˜¾ç¤ºå›½å®¶åç§°å’Œè‹±é›„æ•°é‡
+                select country,count(id) from sanguo where sex="ç”·" group by country order by count(id) desc limit 2;
+
+                å®Œæ•´çš„æŸ¥è¯¢è¯­å¥ç”±ä»¥ä¸‹å…³é”®å­—ç»„æˆ:
+                    é¡ºåºä¸ºä¹¦å†™é¡ºåºï¼Œåºå·æ˜¯mysqlæ‰§è¡Œé¡ºåº
+                    3) æŸ¥æ‰¾:selectã€€... èšåˆå‡½æ•°(å­—æ®µå) from è¡¨å
+                    1) æ¡ä»¶:where
+                    2) åˆ†ç»„:group by
+                    4) ç­›é€‰(å»é‡):having 
+                    5) æ’åº:order by 
+                    6) åˆ†é¡µ:limit åˆ†é¡µæŸ¥è¯¢
+            ----------select user_id,count(user_id) from comment group by user_id order by count(user_id) desc limit 10;--------
+            3).æ³¨æ„:
+                1.å¦‚æœselectåå­—æ®µå’Œgroup by ä¹‹åä¸ä¸€è‡´,åˆ™å¿…é¡»å¯¹è¯¥å­—æ®µè¿›è¡Œèšåˆå¤„ç†(èšåˆå‡½æ•°)
+                2.havingè¯­å¥çš„å­˜åœ¨å¼¥è¡¥äº†whereå…³é”®å­—ä¸èƒ½è¯­å¥å’Œå‡½æ•°è”åˆä½¿ç”¨çš„ä¸è¶³,whereåªèƒ½æ“ä½œè¡¨ä¸­å®é™…å­˜åœ¨çš„å­—æ®µ
+        3.havingï¼šå¯¹åˆ†ç»„èšåˆåçš„ç»“æœè¿›è¡Œè¿›ä¸€æ­¥ç­›é€‰
+            1)æ‰¾å‡ºå¹³å‡æ”»å‡»åŠ›å¤§äº105çš„å›½å®¶çš„å‰ä¸¤å,æ˜¾ç¤ºå›½å®¶åç§°å’Œå¹³å‡æ”»å‡»åŠ›
+                select country,avg(gongji) from sanguo group by country having avg(gongji) > 105 order by avg(gongji) desc limit 2;
         
-	1. ¹ıÂËÄĞÓ¢ĞÛ
-	2. Ã¿¸ö¹ú¼ÒÓĞ¼¸¸öÄĞÓ¢ĞÛ
-	3. ÅÅĞò + limit
+        4.distinct: ä¸æ˜¾ç¤ºå­—æ®µçš„é‡å¤å€¼
+            1.è¡¨ä¸­éƒ½æœ‰é‚£äº›å›½å®¶
+                select destinct country from sanguo;
+                select distinct country,name from sanguo;
+            2.æ³¨æ„:
+                1.distinctå’Œfrom ä¹‹é—´æ‰€æœ‰å­—æ®µéƒ½ç›¸åŒæ‰ä¼šå»é‡
+                2.distinctä¸èƒ½å¯¹ä»»ä½•å­—æ®µåšèšåˆå¤„ç†
+        5.æŸ¥è¯¢è¡¨è®°å½•æ—¶å¯ä»¥åšæ•°å­¦è¿ç®—
+            1)è¿ç®—ç¬¦: +  -  *  /  %
+            2)ç¤ºä¾‹:
+                æŸ¥è¯¢æ—¶æ‰€æœ‰è‹±é›„çš„æ”»å‡»åŠ›ç¿»å€
+2.åµŒå¥—æŸ¥è¯¢
+    1)å®šä¹‰:æŠŠå†…å±‚çš„æŸ¥è¯¢ç»“æœä½œä¸ºå¤–å±‚çš„æŸ¥è¯¢æ¡ä»¶
+    2)è¯­æ³•:
+        select ... from è¡¨å where å­—æ®µå è¿ç®—ç¬¦(æŸ¥è¯¢);
+    3)ç¤ºä¾‹:
+        1.æŠŠæ”»å‡»å€¼å°äºå¹³å‡å€¼çš„è‹±é›„åå­—å’Œæ”»å‡»å€¼æ˜¾ç¤ºå‡ºæ¥
+        select name,gongji from sanguo where gongji < (select avg(gongji) from sanguo);
 
-	3. select country,count(id) from sanguo
-	1. where sex="ÄĞ"
-	2. group by country
-	4. order by count(id) desc
-	5. limit 2;
-    2. ×¢Òâ
-      1.Èç¹ûselectºó×Ö¶ÎºÍgroup byÖ®ºó²»Ò»ÖÂ,Ôò±ØĞë¶Ô¸Ã×Ö¶Î½øĞĞ¾ÛºÏ´¦Àí(¾ÛºÏº¯Êı)
-  4. having : ¶Ô·Ö×é¾ÛºÏºóµÄ½á¹û½øĞĞ½øÒ»²½É¸Ñ¡
-    1. Ê¾Àı
-      ÕÒ³öÆ½¾ù¹¥»÷Á¦´óÓÚ105µÄ¹ú¼ÒµÄÇ°2Ãû,ÏÔÊ¾¹ú¼ÒÃû³ÆºÍÆ½¾ù¹¥»÷Á¦
-        select country,avg(gongji) from sanguo
-        group by country
-        having avg(gongji)>105
-        order by avg(gongji) DESC
-        limit 2;
-    2. ×¢Òâ
-      1. havingÓï¾äÍ¨³£Óëgroup byÓï¾äÁªºÏÊ¹ÓÃ
-      2. havingÓï¾äµÄ´æÔÚÃÖ²¹ÁËwhere¹Ø¼ü×Ö²»ÄÜÓë¾ÛºÏº¯ÊıÁªºÏÊ¹ÓÃµÄ²»×ã,whereÖ»ÄÜ²Ù×÷±íÖĞÊµ¼Ê´æÔÚµÄ×Ö¶Î
-  5. distinct : ²»ÏÔÊ¾×Ö¶ÎµÄÖØ¸´Öµ
-    1. ±íÖĞ¶¼ÓĞÄÄĞ©¹ú¼Ò
-      select distinct country from sanguo;
-      select distinct country,name from sanguo;
-    2. ×¢Òâ
-      1. distinctºÍfromÖ®¼äËùÓĞ×Ö¶Î¶¼ÏàÍ¬²Å»áÈ¥ÖØ
-      2. distinct²»ÄÜ¶ÔÈÎºÎ×Ö¶Î×ö¾ÛºÏ´¦Àí
-  6. ²éÑ¯±í¼ÇÂ¼Ê±¿ÉÒÔ×öÊıÑ§ÔËËã
-    1. ÔËËã·û : + - * / %
-    2. Ê¾Àı
-      ²éÑ¯Ê±ËùÓĞÓ¢ĞÛ¹¥»÷Á¦·­±¶
-        select name,gongji*2 as xgj from sanguo;
-2. Ç¶Ì×²éÑ¯(×Ó²éÑ¯)
-  1. ¶¨Òå : °ÑÄÚ²ãµÄ²éÑ¯½á¹û×÷ÎªÍâ²ãµÄ²éÑ¯Ìõ¼ş
-  2. Óï·¨
-    select ... from ±íÃû where ×Ö¶ÎÃû ÔËËã·û(²éÑ¯);
-    select * from sanguo where id in(select ...)
-    select * from sanguo where (id,name) in();
-  3. Ê¾Àı
-    1. °Ñ¹¥»÷ÖµĞ¡ÓÚÆ½¾ù¹¥»÷ÖµµÄÓ¢ĞÛÃû×ÖºÍ¹¥»÷ÖµÏÔÊ¾³öÀ´
-      select name,gongji from sanguo where gongji<(select avg(gongji) from sanguo);
-    2. ÕÒ³öÃ¿¸ö¹ú¼Ò¹¥»÷Á¦×î¸ßµÄÓ¢ĞÛÃû×ÖºÍ¹¥»÷Öµ
-      # ÓĞBUG
-        select name,gongji from sanguo
-        where gongji in
-        (select max(gongji) from sanguo group by country);
-      # ÍêÃÀ
-	select name,gongji from sanguo
-	where (country,gongji) in
-	(select country,max(gongji) from sanguo group by country);
-3. ¶à±í²éÑ¯
-  1. Á½ÖÖ·½Ê½
-    1. µÑ¿¨¶û»ı(²»¼ÓwhereÌõ¼ş)
-      select ×Ö¶Î1,×Ö¶Î2 from ±í1,±í2;
-    2. ¶à±í²éÑ¯(¼ÓwhereÌõ¼ş)
-      ... from ±í1,±í2 where Ìõ¼ş;
-  2. Ê¾Àı
-    1. ÏÔÊ¾Ê¡ ÊĞÏêÏ¸ĞÅÏ¢
-      select sheng.s_name,city.c_name from sheng,city where sheng.s_id=city.cfather_id;
-    2. ÏÔÊ¾Ê¡ ÊĞ ÏØÏêÏ¸ĞÅÏ¢
-      select sheng.s_name,city.c_name,xian.x_name from MOSHOU.sheng,MOSHOU.city,MOSHOU.xian 
-      where sheng.s_id=city.cfather_id and city.c_id=xian.xfather_id;
-4. Á¬½Ó²éÑ¯
-  1. ÄÚÁ¬½Ó(¶à±í²éÑ¯µÈ¼Û,Ö»ÏÔÊ¾·ûºÏÌõ¼şµÄ¼ÇÂ¼)
-    1. Óï·¨¸ñÊ½
-      select ×Ö¶ÎÃû from ±í1 inner join ±í2 on Ìõ¼ş
-      inner join ±í3 on Ìõ¼ş;
-    2. Ê¾Àı
-      1. ÏÔÊ¾Ê¡ ÊĞÏêÏ¸ĞÅÏ¢
-        select sheng.s_name,city.c_name from MOSHOU.sheng inner join MOSHOU.city on MOSHOU.sheng.s_id=MOSHOU.city.cfather_id;
-      2. ÏÔÊ¾Ê¡ ÊĞ ÏØÏêÏ¸ĞÅÏ¢
-        select sheng.s_name,city.c_name,xian.x_name from  sheng inner join city on sheng.s_id=city.cfather_id inner join xian on city.c_id=xian.XFATHER_ID;
-  2. ÍâÁ¬½Ó
-    1. ×óÁ¬½Ó(left)
-      1. ¶¨Òå : ÒÔ×ó±íÎªÖ÷ÏÔÊ¾²éÑ¯½á¹û
-      2. Ê¾Àı
-        1. ÏÔÊ¾Ê¡ ÊĞÏêÏ¸ĞÅÏ¢
-        2. ÏÔÊ¾Ê¡ ÊĞ ÏØÏêÏ¸ĞÅÏ¢,ËùÓĞµÄÊĞÈ«¶¼ÏÔÊ¾
-          select sheng.s_name,city.c_name,xian.x_name from 
-          sheng right join city
-          on sheng.s_id=city.cfather_id
-          left join xian
-          on city.c_id=xian.xfather_id;
-    2. ÓÒÁ¬½Ó(right)
-      ÒÔÓÒ±íÎªÖ÷ÏÔÊ¾²éÑ¯½á¹û,ÓÃ·¨Í¬×óÁ¬½Ó
-5. Ô¼Êø
-  1. ·Ç¿ÕÔ¼Êø(not null)
-  2. Ä¬ÈÏÔ¼Êø(default Ä¬ÈÏÖµ)
-6. Ë÷Òı(BTREE)
-  1. ¶¨Òå
-    ¶ÔÊı¾İ¿âÖĞ±íµÄÒ»ÁĞ»òÕß¶àÁĞµÄÖµ½øĞĞÅÅĞòµÄÒ»ÖÖ½á¹¹
-  2. ÓÅµã
-    ¼Ó¿ìÊı¾İµÄ¼ìË÷ËÙ¶È
-  3. È±µã
-    1. Õ¼ÓÃÎïÀí´æ´¢¿Õ¼ä
-    2. µ±¶Ô±íÖĞÊı¾İ¸üĞÂÊ±,Ë÷ÒıĞèÒª¶¯Ì¬Î¬»¤,Õ¼ÓÃÏµÍ³×ÊÔ´,½µµÍÊı¾İµÄÎ¬»¤ËÙ¶È
-  4. Ë÷ÒıÊ¾Àı
-    1. ¿ªÆôÔËĞĞÊ±¼ä¼à²â
-      mysql> set profiling=1;
-    2. Ö´ĞĞ1Ìõ²éÑ¯ÃüÁî(Ã»ÓĞ´´½¨Ë÷Òı)
-      select name from t1 where name="lucy88888";
-    3. ÔÚname×Ö¶Î´´½¨Ë÷Òı
-      create index name on t1(name);
-    4. ÔÙÖ´ĞĞ1Ìõ²éÑ¯ÃüÁî
-      select name from t1 where name="lucy99999";
-    5. ¶Ô±ÈÖ´ĞĞÊ±¼ä
-      mysql> show profiles;
-7. Ë÷Òı·ÖÀà
-  1. ÆÕÍ¨Ë÷Òı(index) && Î¨Ò»Ë÷Òı(unique)
-    1. Ê¹ÓÃ¹æÔò
-      1.¿ÉÉèÖÃ¶à¸ö×Ö¶Î
-      2.indexÎŞÔ¼Êø,unique×Ö¶ÎÖµ²»ÄÜÖØ¸´µ«¿ÉÎªNULL
-      3.°Ñ¾­³£ÓÃÀ´²éÑ¯µÄ×Ö¶ÎÉèÖÃÎªË÷Òı×Ö¶Î
-      4.indexµÄKEY±êÖ¾£ºMUL  unique £ºUNI
-    2. ´´½¨±íÊ±´´½¨
-      create table ±íÃû(
-      ... ...
-      index(name),
-      index(id),
-      unique(phnumber),
-      unique(cardnumber)
-      );
-    3. ÒÑÓĞ±íÖĞ´´½¨
-      create [unique] index Ë÷ÒıÃû on ±íÃû(×Ö¶ÎÃû);
-    4. ²é¿´Ë÷Òı
-      1. desc ±íÃû; ¡ª¡ª> KEY±êÖ¾
-      2. show index from ±íÃû;
-    5. É¾³ı
-      drop index Ë÷ÒıÃû on ±íÃû;
+        2.æ‰¾å‡ºæ¯ä¸ªå›½å®¶æ”»å‡»åŠ›æœ€é«˜çš„è‹±é›„åå­—å’Œæ”»å‡»å€¼
+            select name,country,gongji from sanguo where gongji in (select max(gongji) from sanguo group by country);
+            +--------+---------+--------+
+            | name   | country | gongji |
+            +--------+---------+--------+
+            | å­™æƒ   | å´å›½   ã€€ |    100 |
+            | è²‚è‰    | é­å›½   ã€€|    666 |
+            |        | èœ€å›½     |   1005 |
+            +--------+---------+--------+
+            **ä¸Šé¢ä¸€æ¡è¯­å¥æ”¹è¿›:å¯å»æ‰é‡å¤çš„æ•°æ®
+            select name,gongji from sanguo where (country,gongji) in (select country,max(gongji) from sanguo group by country);
+ï¼“.å¤šè¡¨æŸ¥è¯¢
+    1,ä¸¤ç§æ–¹å¼
+        1.ç¬›å¡å°”ç§¯(ä¸åŠ whereæ¡ä»¶)
+            select å­—æ®µ1,å­—æ®µ2 from è¡¨1,è¡¨2;(ç¬›å¡å°”ç§¯)
+        2.å¤šè¡¨æŸ¥è¯¢(åŠ whereæ¡ä»¶)
+            ...from è¡¨1,è¡¨2 where æ¡ä»¶;
+    2.ç¤ºä¾‹:
+        1.æ˜¾ç¤ºçœå¸‚å¿çš„è¯¦ç»†ä¿¡æ¯
+            select sheng.s_name,city.c_name,xian.x_name from sheng,city,xian where sheng.s_id=city.cfather_id and city.c_id = xian.xfather_id;
+            +-----------+--------------+-----------+
+            | s_name    | c_name       | x_name    |
+            +-----------+--------------+-----------+
+            | æ²³åŒ—çœ     | çŸ³å®¶åº„å¸‚      | æ­£å®šå¿     |
+            | æ¹–åŒ—çœ     | æ­¦æ±‰å¸‚        | æ­¦æ˜ŒåŒº     |
+            +-----------+--------------+-----------+
 
+4.è¿æ¥æŸ¥è¯¢:
+    1.å†…è¿æ¥(æ˜¾ç¤ºæ‰€æœ‰ç¬¦åˆæ¡ä»¶çš„è®°å½•)
+        1.è¯­æ³•æ ¼å¼:
+            select å­—æ®µå from è¡¨1ã€€inner join è¡¨2ã€€on  æ¡ä»¶ inner join è¡¨3 on æ¡ä»¶;
 
-  
+            et1:åˆ©ç”¨å†…è¿æ¥çš„æ–¹å¼æ˜¾ç¤ºçœå¸‚ä¿¡æ¯
+            select å­—æ®µå from è¡¨ï¼‘ã€€inner/left/right join è¡¨2ã€€on æ¡ä»¶;*******************************************
+            select sheng.s_nane,city.c_name from sheng inner join city on sheng.s_id = city.cfather_id;
 
-  
+            et2:åˆ©ç”¨å†…è¿æ¥çš„æ–¹å¼æ˜¾ç¤ºçœå¸‚å¿çš„ä¿¡æ¯
+            select sheng.s_name,city.c_name,xian.x_name from sheng inner join city on sheng.s_id = city.cfather_id inner join xian on city.c_id = xian.xfather_id;
     
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Linux
-ÔÚÏß:
-  sudo pip3 install pymysql
-ÀëÏß:
-  ÏÂÔØ: XXX.tar.gz
-  ½âÑ¹: tar -zxvf XXX.tar.gz
-  cd XXX
-  sudo python3 setup.py install
-
-Windows
-  cmd
-  python -m pip install pymysql
-
-
-
-  
-
-      
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
+    2.å¤–è¿æ¥
+        1)å·¦è¿æ¥(left)
+            å®šä¹‰:ä»¥å·¦è¡¨ä¸ºä¸»æ˜¾ç¤ºæŸ¥è¯¢ç»“æœ
+            select sheng.s_name,city.c_name,xian.x_name from sheng inner join city on sheng.s_id = city.cfather_id inner join xian on city.c_id = xian.x_fatherid;
+        2)å³è¿æ¥(right)    
+            å®šä¹‰:ä»¥å³è¡¨ä¸ºä¸»æ˜¾ç¤ºæŸ¥è¯¢ç»“æœ,
+            select sheng.s_name,city.c_name from sheng right join city on sheng.s_id = city.cfather_id;
+        ç¤ºä¾‹:   
+            æ˜¾ç¤ºçœå¸‚å¿è¯¦ç»†ä¿¡æ¯,æ‰€æœ‰çš„å¸‚å…¨éƒ¨æ˜¾ç¤º  
+            select sheng.s_name,city.c_name,xian.x_name from sheng right join city on sheng.s_id = city.cfather_id left join xian on city.c_id = xian.xfather_id;
+5.çº¦æŸ
+    1.éç©ºçº¦æŸ(not full)
+    2.é»˜è®¤çº¦æŸ(defult é»˜è®¤å€¼)
+        ç¤ºä¾‹:create table t3(id int(3) zerofill,usename varchar(20) not null,sex enum("M","F","S") not null default "S")charset=utf8;
+                    +---------+--------------------------+------+-----+---------+-------+
+                    | Field   | Type                     | Null | Key | Default | Extra |
+                    +---------+--------------------------+------+-----+---------+-------+
+                    | id      | int(3) unsigned zerofill | YES  |     | NULL    |       |
+                    | usename | varchar(20)              | NO   |     | NULL    |       |
+                    | sex     | enum('M','F','S')        | NO   |     | S       |       |
+                    +---------+--------------------------+------+-----+---------+-------+
+
+
+6.ç´¢å¼•(BTREE):
+    1.å®šä¹‰
+        å¯¹æ•°æ®åº“ä¸­è¡¨çš„ä¸€åˆ—æˆ–è€…å¤šåˆ—çš„å€¼è¿›è¡Œæ’åºçš„ä¸€ç§ç»“æ„
+    2.ä¼˜ç‚¹:åŠ å¿«æ•°æ®çš„æ£€ç´¢é€Ÿåº¦
+    3.ç¼ºç‚¹:
+        1)å ç”¨ç‰©ç†å­˜å‚¨ç©ºé—´
+        2)å½“å¯¹è¡¨ä¸­çš„æ•°æ®æ›´æ–°æ—¶,ç´¢å¼•éœ€è¦åŠ¨æ€ç»´æŠ¤,å ç”¨ç³»ç»Ÿèµ„æº,é™ä½æ•°æ®çš„ç»´æŠ¤é€Ÿåº¦
+    4.ç´¢å¼•ç¤ºä¾‹:
+        1)å¼€å§‹è¿è¡Œæ—¶é—´æ£€æµ‹
+        mysql> set profiling=1;
+        2)æ‰§è¡Œä¸€æ¡æŸ¥è¯¢å‘½ä»¤(æ²¡æœ‰åˆ›å»ºç´¢å¼•)
+        select name from t1 where name = 'lucy88888';
+        3)åœ¨nameå­—æ®µåˆ›å»ºç´¢å¼•
+        create index name on t1(name);
+        4)åœ¨æ‰§è¡Œä¸€æ¡æŸ¥è¯¢å‘½ä»¤
+        select name from t1 where name = 'lucy88888';
+        5)å¯¹æ¯”æ‰§è¡Œæ—¶é—´
+        mysql> show profiles;
+7.ç´¢å¼•çš„åˆ†ç±»
+    1.æ™®é€šç´¢å¼•(index) && å”¯ä¸€ç´¢å¼•(unique)ã€€(ç”¨çš„ç®—æ³•éƒ½æ˜¯BTREE)
+        1)ä½¿ç”¨è§„åˆ™ï¼š
+            1.å¯è®¾ç½®å¤šä¸ªå­—æ®µ
+            2.index æ— çº¦æŸ,uniqueå­—æ®µå€¼ä¸èƒ½é‡å¤ä½†å¯ä¸ºNULL
+            3.æŠŠç»å¸¸ç”¨æ¥æŸ¥è¯¢çš„å­—æ®µè®¾ç½®ä¸ºç´¢å¼•å­—æ®µ
+            4.indexçš„KEYæ ‡å¿—:MUL unique:UNI
+        2)åˆ›å»ºè¡¨æ—¶åˆ›å»ºç´¢å¼•
+            create table è¡¨å(index(name),index(id),index(phonenumber)
+        
+        ç»“åˆç¤ºä¾‹:
+            åˆ›å»ºä¸¤ä¸ªç±»å‹çš„ç´¢å¼•: create table t5(id int,name varchar(20),age tinyint,phnumber bigint,index(name),unique(phnumber))charset=utf8;
+                            +----------+-------------+------+-----+---------+-------+
+                            | Field    | Type        | Null | Key | Default | Extra |
+                            +----------+-------------+------+-----+---------+-------+
+                            | id       | int(11)     | YES  |     | NULL    |       |
+                            | name     | varchar(20) | YES  | MUL | NULL    |       |
+                            | age      | tinyint(4)  | YES  |     | NULL    |       |
+                            | phnumber | bigint(20)  | YES  | UNI | NULL    |       |
+                            +----------+-------------+------+-----+---------+-------+
+        3)å·²æœ‰è¡¨ä¸­åˆ›å»º
+        create unique index ç´¢å¼•åã€€on è¡¨å(å­—æ®µå);
+        
+        4)æŸ¥çœ‹ç´¢å¼•
+            1.desc è¡¨å; â€”â€”> Keyæ ‡å¿—
+            2.show index from è¡¨çš„åå­—ï¼› or show index from è¡¨å\G
+        5)åˆ é™¤ç´¢å¼•
+            drop index ç´¢å¼•åã€€on è¡¨å;

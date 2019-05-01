@@ -1,309 +1,221 @@
-Day03»Ø¹Ë
-1. SQL²éÑ¯
-  1. ¾ÛºÏº¯Êı
-    avg(...) sum(...) max(...) min(...)
-    count(×Ö¶ÎÃû) ##¿ÕÖµNULL²»»á±»Í³¼Æ
-  2. group by
-    1. selectºóµÄ×Ö¶ÎÃûÈç¹ûÃ»ÓĞÔÚgroup byºó³öÏÖ,Ôò±ØĞë¶Ô¸Ã×Ö¶Î½øĞĞ¾ÛºÏ´¦Àí
-  3. havingÓï¾ä : ¶Ô²éÑ¯½á¹û½øÒ»²½É¸Ñ¡
-    whereÖ»ÄÜ²Ù×÷±íÖĞÊµ¼Ê´æÔÚµÄ×Ö¶Î,having¿É²Ù×÷¾ÛºÏº¯ÊıÉú³ÉµÄÏÔÊ¾ÁĞ
-  4. distinct
-    select distinct ×Ö¶Î1,×Ö¶Î2 from ±íÃû;
-  5. ²éÑ¯±í¼ÇÂ¼Ê±×öÊıÑ§ÔËËã
-    select ×Ö¶Î1*2 as name1,×Ö¶Î2+10 as name2 from ±í;
-2. Ç¶Ì×²éÑ¯(×Ó²éÑ¯)
-  °ÑÄÚ²ãµÄ²éÑ¯½á¹û×÷ÎªÍâ²ãµÄ²éÑ¯Ìõ¼ş
-3. ¶à±í²éÑ¯
-  1. µÑ¿¨¶û»ı : ²»¼ÓwhereÌõ¼ş
-  2. ¶à±í²éÑ¯ : ¼ÓwhereÌõ¼ş,Ö»ÏÔÊ¾Æ¥Åäµ½µÄ¼ÇÂ¼
-4. Á¬½Ó²éÑ¯
-  1. ÄÚÁ¬½Ó : Ö»ÏÔÊ¾Æ¥Åäµ½µÄ¼ÇÂ¼
-  2. ÍâÁ¬½Ó
-    1.×óÁ¬½Ó : ÒÔ×ó±íÎªÖ÷ÏÔÊ¾²éÑ¯½á¹û
-    2.ÓÒÁ¬½Ó : ÒÔÓÒ±íÎªÖ÷ÏÔÊ¾²éÑ¯½á¹û
-  3. select ×Ö¶ÎÃû from ±í1 inner/left/right join ±í2 on Ìõ¼ş;
-5. Ô¼Êø
-  1. ·Ç¿ÕÔ¼Êø(not null)
-  2. Ä¬ÈÏÔ¼Êø(default Öµ)
-6. Ë÷Òı
-  1. ÓÅµã : ¼Ó¿ìÊı¾İµÄ¼ìË÷ËÙ¶È
-  2. È±µã
-    1. Õ¼ÓÃÎïÀí´æ´¢¿Õ¼ä
-    2. ĞèÒª¶¯Ì¬Î¬»¤,Õ¼ÓÃÏµÍ³×ÊÔ´
-  3. SQLÃüÁîÔËĞĞÊ±¼ä¼ì²â
-    1. ¿ªÆô : mysql> set profiling=1;
-    2. ²é¿´ : mysql> show profiles;
-    3. ¹Ø±Õ : mysql> set profiling=0;
-7. Ë÷Òı·ÖÀà
-  1. ÆÕÍ¨(MUL) Î¨Ò»(UNI,×Ö¶ÎÖµ²»ÄÜÖØ¸´,µ«ÊÇ¿ÉÎªNULL)
-  2. ´´½¨
-    index(×Ö¶ÎÃû),index(×Ö¶ÎÃû),
-    unique(×Ö¶ÎÃû),unique(×Ö¶ÎÃû)
-    create unique index Ë÷ÒıÃû on ±íÃû(×Ö¶ÎÃû);
-  3. ²é¿´
-    1. desc ±íÃû;  --> KEY±êÖ¾
-    2. show index from ±íÃû\G;
-  4. É¾³ı
-    drop index Ë÷ÒıÃû on ±íÃû;(Ö»ÄÜÒ»¸öÒ»¸öÉ¾)
-***************************************
-Day04±Ê¼Ç
-1. Ö÷¼ü(primary key) && ×ÔÔö³¤ÊôĞÔ(auto_increment)
-  1. Ê¹ÓÃ¹æÔò
-    1. Ö»ÄÜÓĞ1¸öÖ÷¼ü×Ö¶Î
-    2. Ô¼Êø : ²»ÔÊĞíÖØ¸´,ÇÒ²»ÄÜÎªNULL
-    3. KEY±êÖ¾ : PRI
-    4. Í¨³£ÉèÖÃ¼ÇÂ¼±àºÅµÄ×Ö¶Îid,ÄÜÎ¨Ò»Ëø¶¨1Ìõ¼ÇÂ¼
-  2. ´´½¨±íÊ±
-    create table ±íÃû(
-    id int primary key auto_increment,
-    ... ...
-    )auto_increment=10000,charset=utf8,engine=InnoDB;
-  3. ÒÑÓĞ±í
-    alter table ±íÃû add primary key(id);
-  4. É¾³ı
-    1. É¾³ı×ÔÔö³¤ÊôĞÔ(modify)
-      alter table ±íÃû modify id int;
-    2. É¾³ıÖ÷¼ü(drop)
-      alter table ±íÃû drop primary key;
-2. Íâ¼ü(foreign key)
-  1. ¶¨Òå £ºÈÃµ±Ç°±í×Ö¶ÎµÄÖµÔÚÁíÒ»¸ö±íµÄ·¶Î§ÄÚÑ¡Ôñ
-  2. Óï·¨
-    foreign key(²Î¿¼×Ö¶ÎÃû)
-    references Ö÷±í(±»²Î¿¼×Ö¶ÎÃû)
-    on delete ¼¶Áª¶¯×÷
-    on update ¼¶Áª¶¯×÷
-  3. Ê¹ÓÃ¹æÔò
-    1. Ö÷±í ´Ó±í×Ö¶ÎÊı¾İÀàĞÍÒªÒ»ÖÂ
-    2. Ö÷±í±»²Î¿¼×Ö¶Î : Ö÷¼ü
-  4. Ê¾Àı
-    ±í1 ½É·ÑĞÅÏ¢±í(²ÆÎñ)
-      id    ĞÕÃû    °à¼¶    ½É·Ñ½ğ¶î
-       1   ÌÆ²®»¢  AID09       300
-       2   µãÇïÏã  AID09       300
+- group by:å¦‚æœselect åå‡ºç°çš„å­—æ®µæ²¡æœ‰åœ¨group by åå‡ºç°,åˆ™å¿…é¡»å¯¹è¯¥å­—æ®µè¿›è¡Œèšåˆå¤„ç†
+- distinct:  select distinct å­—æ®µ1,å­—æ®µ2ã€€from è¡¨å
+- select å­—æ®µ1*2 as name1,å­—æ®µ2+10 as name2 from è¡¨;
+- å¤šè¡¨æŸ¥è¯¢
+    1.ç¬›å¡å°”ç§¯:ä¸åŠ whereæ¡ä»¶
+    2.åŠ whereæ¡ä»¶,åªæ˜¾ç¤ºåŒ¹é…åˆ°çš„è®°å½•
+
+****************************************************************************************
+Day04ç¬”è®°
+1.ç´¢å¼•
+    1.ä¸»é”®(primary key) è‡ªå¢é•¿å±æ€§(auto_increment)
+        - ä½¿ç”¨è§„åˆ™:1.ä¸€ä¸ªè¡¨ä¸­åªèƒ½æœ‰ä¸€ä¸ªä¸»é”®å­—æ®µ
+                2.çº¦æŸ:å­—æ®µå€¼ä¸å…è®¸é‡å¤,ä¸”ä¸èƒ½ä¸ºNULL
+                3.KEYæ ‡å¿—:PRI
+                4.é€šå¸¸è®¾ç½®è®°å½•ç¼–å·çš„å­—æ®µid,èƒ½å”¯ä¸€é”å®šä¸€æ¡è®°å½•
+    2.åˆ›å»ºè¡¨æ—¶:
+        create table è¡¨å(id int primary key auto_increment,.......)auto_increment=1000,charset=utf8,engine=INnoDB;
+        
+        ç¤ºä¾‹:
+        create table t1(id int primary key auto_increment,name varchar(20) not null)auto_increment=1000,charset=utf8;
+        or
+        create table è¡¨å(id int,name varchar(20),primary(id,name)) ----> å¤åˆä¸»é”®,ä¸ç»å¸¸ç”¨
+            +-------+-------------+------+-----+---------+----------------+
+            | Field | Type        | Null | Key | Default | Extra          |
+            +-------+-------------+------+-----+---------+----------------+
+            | id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+            | name  | varchar(20) | NO   |     | NULL    |                |
+            +-------+-------------+------+-----+---------+----------------+
+
+            +------+-----------+
+            | id   | name      |
+            +------+-----------+
+            | 1000 | ç‹ä¼Ÿè¶…  ã€€  |
+            | 1001 | å¼ å¥”       |
+            | 1002 | å®‰ä»˜ä¼Ÿ     |
+            | 1003 | é™ˆåé½     |
+            | 1004 | åºç‘       |
+            +------+-----------+
+
+        æ³¨æ„:å¦‚æœåˆ é™¤äº†ä¸€ä¸ªç”¨æˆ·æˆ–è€…è®°å½•ä¹‹å,å†æ·»åŠ è®°å½•ä¸åœ¨ä»å½“å‰å¼€å§‹å¢åŠ ,èƒ½é”å®šå”¯ä¸€ä¸€æ¡è®°å½•.
+        ä¾‹:delete from t1 where id = 1004;
+           insert into t1 values('åºç‘æ¶›');
+            +------+-----------+
+            | id   | name      |
+            +------+-----------+
+            | 1000 | ç‹ä¼Ÿè¶…    |
+            | 1001 | å¼ å¥”      |
+            | 1002 | å®‰ä»˜ä¼Ÿ    |
+            | 1003 | é™ˆåé½    |
+            | 1005 | åºç‘æ¶›    |
+            +------+-----------+
     
-    ±í2 Ñ§ÉúĞÅÏ¢±í(°àÖ÷ÈÎ)
-      stu_id   ĞÕÃû    ½É·Ñ½ğ¶î
-       1      ÌÆ²®»¢      300
-       2      µãÇïÏã      300
-     XXXX  3      ×£Ö¦É½      300  XXXX
-	±í1 : jftab(Ö÷±í)
-	create table jftab(
-	id int primary key,
-	name varchar(20),
-	class char(5),
-	money smallint
-	)charset=utf8;
-	insert into jftab values
-	(1,"ÌÆ²®»¢","AID09",300),
-	(2,"µãÇïÏã","AID09",300),
-	(3,"×£Ö¦É½","AID09",300);
-	±í2 : bjtab(´Ó±í)
-	create table bjtab(
-	stu_id int,
-	name varchar(20),
-	money smallint,
-	foreign key(stu_id) references jftab(id)
-	on delete cascade
-	on update cascade
-	)charset=utf8;
-  5. É¾³ı
-    alter table ±íÃû drop foreign key Íâ¼üÃû;
-    Íâ¼üÃû : show create table ±íÃû;
-  6. ÒÑÓĞ±íÌí¼Ó
-    alter table ±íÃû add
-    foreign key(..............
-  7. ¼¶Áª¶¯×÷
-    1. cascade
-      Êı¾İ¼¶ÁªÉ¾³ı ¸üĞÂ(²Î¿¼×Ö¶Î)
-    2. restrict(Ä¬ÈÏ)
-      ´Ó±íÓĞÏà¹ØÁª¼ÇÂ¼,²»ÔÊĞíÖ÷±í²Ù×÷
-    3. set null
-      Ö÷±íÉ¾³ı ¸üĞÂ,´Ó±íÏà¹ØÁª¼ÇÂ¼×Ö¶ÎÖµÉèÖÃÎªNULL
-3. Ëø
-  1. Ä¿µÄ : ½â¾ö¿Í»§¶Ë²¢·¢·ÃÎÊµÄ³åÍ»ÎÊÌâ
-  2. Ëø·ÖÀà
-    1. ËøÀàĞÍ
-      1. ¶ÁËø(¹²ÏíËø)
-        select : ¼Ó¶ÁËøÖ®ºó±ğÈË²»ÄÜ¸ü¸Ä±í¼ÇÂ¼,µ«¿ÉÒÔ½øĞĞ²éÑ¯
-      2. Ğ´Ëø(»¥³âËø ÅÅËûËø)
-        ¼ÓĞ´Ëøºó±ğÈË²»ÄÜ²é ²»ÄÜ¸Ä
-    2. ËøÁ£¶È
-      1. ±í¼¶Ëø : ¼Ó¶ÁËø Ğ´Ëø
-      2. ĞĞ¼¶Ëø : ¼Ó¶ÁËø Ğ´Ëø
-4. ´æ´¢ÒıÇæ(´¦Àí±íµÄ´¦ÀíÆ÷)
-  1. »ù±¾²Ù×÷
-    1. ²é¿´ËùÓĞ´æ´¢ÒıÇæ
-      mysql> show engines;
-    2. ²é¿´ÒÑÓĞ±íµÄ´æ´¢ÒıÇæ
-      mysql> show create table ±íÃû;
-    3. Ö¸¶¨´æ´¢ÒıÇæ
-      create table ±íÃû(...)engine=MyISAM;
-    4. ÒÑÓĞ±í
-      alter table ±íÃû engine=InnoDB;
-  2. ³£ÓÃ´æ´¢ÒıÇæµÄÌØµã
-    1. InnoDB
-      1. Ö§³ÖÍâ¼ü ÊÂÎñ ÊÂÎñ»Ø¹ö
-      2. Ö§³ÖĞĞ¼¶Ëø
-      3. ¹²Ïí±í¿Õ¼ä
-        ±íÃû.frm : ±í½á¹¹ºÍË÷ÒıÎÄ¼ş
-	±íÃû.ibd : ±í¼ÇÂ¼
-    2. MyISAM
-      1. Ö§³Ö±í¼¶Ëø
-      2. ¶ÀÏí±í¿Õ¼ä
-        ±íÃû.frm : ±í½á¹¹
-	±íÃû.MYD : ±í¼ÇÂ¼(my data)
-	±íÃû.MYI : Ë÷ÒıÎÄ¼ş(my index)
-    3. MEMORY
-      ±í½á¹¹´æ´¢ÔÚÓ²ÅÌÖĞ,±í¼ÇÂ¼´æ´¢ÔÚÄÚ´æÖĞ
-      ·şÎñ/Ö÷»úÖØÆôºó,±í½á¹¹»¹ÔÚ,±í¼ÇÂ¼ÏûÊ§
-  3. ÈçºÎ¾ö¶¨Ê¹ÓÃÄÄ¸ö´æ´¢ÒıÇæ
-    1. Ö´ĞĞ²éÑ¯²Ù×÷¶àµÄ±íÓÃMyISAM(Ê¹ÓÃInnoDBÀË·Ñ×ÊÔ´)
-    2. Ö´ĞĞĞ´²Ù×÷¶àµÄ±íÓÃInnoDB
-5. Êı¾İ±¸·İ(mysqldump,ÔÚLinuxÖÕ¶ËÖĞ²Ù×÷)
-  1. ÃüÁî¸ñÊ½
-    mysqldump -uÓÃ»§Ãû -p Ô´¿âÃû > ~/XXX.sql
-  2. Ô´¿âÃû±íÊ¾·½Ê½
-    --all-databases     ±¸·İËùÓĞ¿â
-    ¿âÃû                ±¸·İµ¥¸ö¿â
-    -B ¿â1 ¿â2 ¿â3      ±¸·İ¶à¸ö¿â
-    ¿âÃû ±í1 ±í2 ±í3    ±¸·İÖ¸¶¨¿âµÄ¶àÕÅ±í
-  3. Á·Ï°
-    1. ±¸·İËùÓĞ¿â,all.sql
-      mysqldump -uroot -p --all-databases > all.sql
-    2. ±¸·İMOSHOU¿âÏÂµÄsheng city xianÈıÕÅ±í
-      mysqldump -uroot -p MOSHOU sheng city xian > scx.sql
-    3. ±¸·İ db4 ¿â,db4.sql
-      mysqldump -uroot -p db4 > db4.sql
-6. Êı¾İ»Ö¸´(LinuxÖÕ¶Ë²Ù×÷)
-  1. ÃüÁî¸ñÊ½
-    mysql -uroot -p Ä¿±ê¿âÃû < XXX.sql
-    mysql -uroot -p db4 < db4.sql
-  2. ´ÓËùÓĞ¿â±¸·İÖĞ»Ö¸´Ä³Ò»¸ö¿â(--one-database)
-    mysql -uroot -p --one-database ¿âÃû < all.sql
-  3. Ê¾Àı
-    1. ÔÚMOSHOU.shengĞÂÔö1Ìõ¼ÇÂ¼
-      insert into sheng(s_id,s_name) values("300001","Çàº£Ê¡");
-    2. ÔÚMOSHOUĞÂ½¨1ÕÅ±í
-      create table t520(id int);
-    3. »Ö¸´MOSHOU¿â
-      mysql -uroot -p --one-database MOSHOU < all.sql
-  4. ×¢Òâ
-    1. »Ö¸´¿âÊ±,Èç¹û¿â²»´æÔÚ,Ôò±ØĞëÏÈ´´½¨¿Õ¿â
-    2. »Ö¸´¿âÊ±,»Ö¸´µ½Ô­¿â»á½«±íÖĞÊı¾İ¸²¸Ç,ĞÂÔö±í²»»áÉ¾³ı
-7. Êı¾İµ¼Èë
-  1. ×÷ÓÃ : °ÑÎÄ¼şÏµÍ³µÄÄÚÈİµ¼Èëµ½Êı¾İ¿â±íÖĞ
-  2. Óï·¨¸ñÊ½
-    load data infile "/var/lib/mysql-files/ÎÄ¼şÃû"
-    into table ±íÃû
-    fields terminated by "·Ö¸ô·û"
-    lines terminated by "\n"
-  3. °ÑscoreTable.csvÎÄ¼şµ¼Èëµ½Êı¾İ¿â±íÖĞ
-    1. ÔÚÊı¾İ¿â´´½¨¶ÔÓ¦µÄ±í
-      create table scoretab(
-      id int,
-      name varchar(20),
-      score float(5,2),
-      phnum char(11),
-      class char(7)
-      )charset=utf8;
-    2. °ÑÎÄ¼ş¿½±´µ½Êı¾İ¿âµÄËÑË÷Â·¾¶ÖĞ
-      1. ²é¿´ËÑË÷Â·¾¶
-        show variables like "secure_file_priv";
-      2. ¿½±´
-        sudo cp scoreTable.csv  /var/lib/mysql-files/
-	sudo -i
-	cd /var/lib/mysql-files/
-	chmod 644 scoreTable.csv
-    3. Ö´ĞĞÊı¾İµ¼ÈëÓï¾ä
-      load data infile "/var/lib/mysql-files/scoreTable.csv"
-      into table scoretab
-      fields terminated by ","
-      lines terminated by "\n";
-8. Êı¾İµ¼³ö
-  1. ×÷ÓÃ : ½«Êı¾İ¿âÖĞ±í¼ÇÂ¼µ¼³öµ½ÏµÍ³ÎÄ¼şÀï
-  2. Óï·¨¸ñÊ½
-    select ... from ±íÃû where Ìõ¼ş
-    into outfile "/var/lib/mysql-files/ÎÄ¼şÃû"
-    fields terminated by "·Ö¸ô·û"
-    lines terminated by "\n";
-  3. Ê¾Àı
-    1. °Ñ sheng ±íÖĞËùÓĞ¼ÇÂ¼µ¼³öÀ´,sheng.csv
-      select * from MOSHOU.sheng
-      into outfile "/var/lib/mysql-files/sheng.csv"
-      fields terminated by ","
-      lines terminated by "\n";
-    2. ½« mysql ¿âÏÂµÄuser±íÖĞ, user ºÍ host Á½¸ö×Ö¶ÎµÄÖµµ¼³öÀ´user.txt,ÒÔ "   " ·Ö¸ô
-      select user,host from mysql.user 
-      into outfile "/var/lib/mysql-files/user.txt"
-      fields terminated by "   "
-      lines terminated by "\n";
-9. MySQLÓÃ»§ÕË»§¹ÜÀí
-  1. ¿ªÆôMySQLÔ¶³ÌÁ¬½Ó
-    1. sudo -i
-    2. cd /etc/mysql/mysql.conf.d/
-    3. subl mysqld.cnf
-      #bind-address=127.0.0.1
-    4. /etc/init.d/mysql restart
-  2. Ìí¼ÓÊÚÈ¨ÓÃ»§
-    1. ÓÃrootÓÃ»§µÇÂ¼mysql
-    2. ÊÚÈ¨
-      mysql> grant È¨ÏŞÁĞ±í on ¿â.±í
-             to "ÓÃ»§Ãû"@"%" identified by "ÃÜÂë"
-	     with grant option;
-      È¨ÏŞÁĞ±í : all privileges , select  update 
-      ¿â.±í    : *.*   ¿âÃû.*
-    3. Ê¾Àı
-      1. Ìí¼ÓÓÃ»§tiger,ÃÜÂë123,¶ÔËùÓĞ¿âµÄËùÓĞ±íÓĞËùÓĞÈ¨ÏŞ
-        grant all privileges on *.* to "tiger"@"%" identified by "123" with grant option;
-      2. Ìí¼ÓÓÃ»§rabbit,ÃÜÂë123,¶Ôdb4¿âÓĞËùÓĞÈ¨ÏŞ
-        grant select on db4.* to "rabbit"@"%" identified by "123" with grant option;
+    3.åœ¨å·²ç»åˆ›å»ºçš„è¡¨ä¸­----æ·»åŠ ä¸»é”®
+        alter table è¡¨å add primary key(id);
+    
+    4.åˆ é™¤ä¸€ä¸ªä¸»é”®çš„ç›¸å…³å±æ€§
+        1.åˆ é™¤è‡ªå¢é•¿å±æ€§(modify)
+        et: alter table è¡¨å modify id int;
+        2.åˆ é™¤ä¸»é”®(drop)
+        alter table è¡¨å drop primary key;
+        æ³¨æ„:é¦–å…ˆåˆ é™¤å¢é•¿å±æ€§,ç„¶ååˆ é™¤ä¸»é”®;
+    
+2.å¤–é”®:
+    1.å®šä¹‰:è®©å½“å‰è¡¨å­—æ®µçš„å€¼åœ¨å¦ä¸€ä¸ªè¡¨çš„èŒƒå›´å†…é€‰æ‹©
+    2.è¯­æ³•:
+        foreign key(å‚è€ƒå­—æ®µå)
+        references ä¸»è¡¨(è¢«å‚è€ƒå­—æ®µå)
+        on delete çº§è”åŠ¨ä½œ
+        on update çº§è”åŠ¨ä½œ
+    3.ä½¿ç”¨è§„åˆ™
+        1.ä¸»è¡¨ã€€ä»è¡¨å­—æ®µæ•°æ®ç±»å‹è¦ä¸€è‡´
+        2.ä¸»è¡¨çš„è¢«å‚è€ƒå­—æ®µ:ä¸»é”®
+    4.å®ä¾‹:
+        è¡¨1 ç¼´è´¹ä¿¡æ¯è¡¨(è´¢åŠ¡)  å»ºç«‹:create table jftab(id int primary key,name varchar(20),class char(5),money smallint)charset=utf8;
+                                     
+        è¡¨2 å­¦ç”Ÿä¿¡æ¯è¡¨ï¼ˆä»è¡¨)  create table bjtab(stu_id int,name varchar(20),money smallint,foreign key(stu_id) references jftab(id) on delete cascade on update cascade)charset=utf8;
+        æ³¨æ„:è®¾ç½®idå…³è”å,ä¸»è¡¨ä¸­çš„idå€¼ä¿®æ”¹ä»è¡¨çš„idä¹Ÿä¼šè·Ÿç€æ”¹å˜,åˆ é™¤ä¹Ÿæ˜¯å¦‚æ­¤
+    5.åˆ é™¤
+        alter table è¡¨åã€€drop forgin key å¤–é”®å;ã€€åˆ é™¤å¤–é”®åä¹‹åçº§è”åŠ¨ä½œä¼šè‡ªåŠ¨å˜æˆé»˜è®¤restrict***********
+        æŸ¥çœ‹å¤–å»ºå:show create table è¡¨å;
+        ç¤ºä¾‹:
+        alter table bjtab drop foreign key bjtab_ibfk_1;
+        alter table bjtabã€€add forgin key(stu_id) references jftab(id);
+        delete from jftab where name = "ç‚¹ç§‹é¦™"; å°±é˜”ä»¥åˆ é™¤äº†
 
-×÷Òµ:
-1. Homework.txt
-2. °Ñ/etc/passwdÎÄ¼şµ¼Èëµ½Êı¾İ¿â±íÖĞ,userinfo
-  tarena  :  x   :  1000  :  1000
-  ÓÃ»§Ãû    ÃÜÂë    uidºÅ    gidºÅ
-  :  tarena,,,  :  /home/tarena  :  /bin/bash
-  ÓÃ»§ÃèÊö         Ö÷Ä¿Â¼           µÇÂ¼È¨ÏŞ
+    6.å·²æœ‰è¡¨æ·»åŠ 
+        alter table è¡¨åã€€add forgin key(........)
 
-  7ÁĞ,6¸ö:¸ô¿ª
+    7.çº§è”åŠ¨ä½œéƒ½æœ‰å“ªäº›?
+        1.cascade
+            æ•°æ®çº§è”åˆ é™¤ã€€æ›´æ–°(å‚è€ƒå­—æ®µ) 
+        2.restrict(é»˜è®¤)
+            ä»è¡¨æœ‰ç›¸å…³è®°å½•,ä¸å…è®¸ä¸»è¡¨æ“ä½œ
+        3.set null
+            ä¸»è¡¨åˆ é™¤ã€€æ›´æ–°,ä»è¡¨ç›¸å…³è”è®°å½•å­—æ®µå€¼è®¾ç½®ä¸ºNULL
+
+    å¤–é”®æ€»ç»“:ä»è¡¨ä¸­è®¾ç½®ä¸€ä¸ªå¤–é”®è·Ÿéšä¸»è¡¨ä¸­çš„ä¸»é”®å…³è”,æ·»åŠ çº§è”åŠ¨ä½œ,å¹¶ä¸”åˆ é™¤ä¸»é”®ååè·Ÿéšå…¶ä»–çº§è”åŠ¨ä½œ.
+3.é”
+    1.ç›®çš„:è§£å†³å®¢æˆ·ç«¯å¹¶å‘è®¿é—®çš„å†²çªé—®é¢˜
+    2.é”åˆ†ç±»:
+        1)é”ç±»å‹
+            1.è¯»é”(å…±äº«é”)
+                select:åŠ è¯»é”ä¹‹ååˆ«äººä¸èƒ½æ›´æ”¹è¡¨è®°å½•,ä½†å¯ä»¥è¿›è¡ŒæŸ¥è¯¢
+                
+            2.å†™é”(äº’æ–¥é”,æ’ä»–é”)
+                update:åŠ å†™é”ååˆ«äººä¸èƒ½æŸ¥ã€€ä¹Ÿä¸èƒ½æ”¹
+        2)é”ç²’åº¦
+            1.è¡¨çº§é”ï¼šåŠ è¯»é”ã€€å†™é”
+                     MyISAM æœç´¢å¼•æ“ åªæ”¯æŒè¡¨çº§é”
+            2.è¡Œçº§é”ï¼šåŠ è¯»é”ã€€å†™é”
+                    INnoDB é»˜è®¤æœç´¢å¼•æ“,æ”¯æŒè¡Œçº§é”
+
+4.å­˜å‚¨å¼•æ“(å¤„ç†è¡¨çš„å¤„ç†å™¨)
+    1.åŸºæœ¬æ“ä½œï¼š
+        1.æŸ¥çœ‹æ‰€æœ‰çš„å­˜å‚¨å¼•æ“
+            mysql> show engines;
+        2.æŸ¥çœ‹å·²æœ‰è¡¨çš„å­˜å‚¨å¼•æ“
+            show create table è¡¨å;
+        3.æŒ‡å®šå­˜å‚¨å¼•æ“:
+            create table è¡¨å(....)engine=MyISAM;   
+        4.å·²æœ‰è¡¨;
+            alter table è¡¨å engine=INnoDB
+    2.å¸¸ç”¨å­˜å‚¨å¼•æ“çš„ç‰¹ç‚¹:
+        1.INnoDB
+            1)æ”¯æŒå¤–é”®ã€€äº‹åŠ¡å›æ»š
+            2)æ”¯æŒè¡Œçº§é”
+            3)å…±äº«è¡¨ç©ºé—´
+            æ³¨æ„:   InnoDBçš„ç‰¹ç‚¹:è¡¨å.frmè¡¨ç»“æ„å’Œç´¢å¼•æ–‡ä»¶ã€€ã€€ã€€è¡¨å.ibdå­˜æ”¾è¡¨è®°å½•(my data)  
+        2.MyISAM
+            1)æ”¯æŒè¡¨çº§é”
+            2)ç‹¬äº«è¡¨ç©ºé—´
+            è¡¨å.frm:è¡¨ç»“æ„
+            è¡¨å.MYD:è¡¨è®°å½•(my data)
+            è¡¨å.MYI:ç´¢å¼•æ–‡ä»¶(my index)
+        3.MEMORY
+            è¡¨ç»“æ„å­˜å‚¨åœ¨ç¡¬ç›˜ä¸­,è¡¨è®°å½•å­˜å‚¨åœ¨å†…å­˜ä¸­,æœåŠ¡/ä¸»æœºé‡å¯å,è¡¨ç»“æ„è¿˜åœ¨,è¡¨è®°å½•æ¶ˆå¤±
+    3.å¦‚ä½•å†³å®šä½¿ç”¨å“ªä¸ªå­˜å‚¨å¼•æ“:******************************************************************8
+        1.æ‰§è¡ŒæŸ¥è¯¢å¤šçš„è¡¨ç”¨MyISAM(ä½¿ç”¨INnoDBæµªè´¹èµ„æº); ä»»æ„ä¸€ä¸ªæ“ä½œéƒ½ä¼šæœ‰ä¸€ä¸ªè¡¨é”
+
+        2.æ‰§è¡Œå†™æ“ä½œå¤šæˆ–è€…æ›´æ–°æ“ä½œå¤šçš„è¡¨ç”¨InnoDB
+
+5.æ•°æ®å¤‡ä»½(mysqldump,åœ¨linuxç»ˆç«¯ä¸­æ“ä½œ)
+    1.å®Œå…¨å¤‡ä»½
+        1.å‘½ä»¤æ ¼å¼: mysqldunp -uç”¨æˆ·åã€€ï¼p æºåº“å > ~/XXX.sql
+        2.æºåº“åè¡¨ç¤ºæ–¹å¼
+            --all-databases     å¤‡ä»½æ‰€æœ‰åº“
+            åº“å                 å¤‡ä»½å•ä¸ªåº“
+            -B ã€€åº“1 åº“2 åº“3      å¤‡ä»½å¤šä¸ªåº“
+            åº“å è¡¨1 è¡¨2 è¡¨3       å¤‡ä»½åˆ¶å®šåº“çš„å¤šå¼ è¡¨
+        ç¤ºä¾‹:mysqldump -uroot -p -B MOSHOU > db4MOSHOU.sql
+        æ³¨æ„:å¤‡ä»½è¿‡çš„æ–‡ä»¶æ˜¯SQLå‘½ä»¤
+    2.å¢é‡å¤‡ä»½
+
+6.æ•°æ®æ¢å¤(linuxç»ˆç«¯æ“ä½œ)
+    1.å‘½ä»¤æ ¼å¼
+        mysql -uroot -p ç›®æ ‡åº“å < xxx.sql
+        mysql -uroot -p db4 < db4.sql
 
 
+    2.ä»æ‰€æœ‰åº“å¤‡ä»½ä¸­æ¢å¤æŸä¸€ä¸ªåº“(--one-database)
+        mysql -uroot -p --one-database MOSHOU < all.sql
 
 
+        (--one-databse)  æ¢å¤ä¸€ä¸ªåº“
 
+    3. åœ¨MOSHOU.shengæ–°å¢1æ¡è®°å½•
+    insert into sheng(s_id,s_name)
 
+    4.æ³¨æ„:
+        1.æ¢å¤åº“æ—¶,å¦‚æœåº“ä¸å­˜åœ¨,åˆ™å¿…é¡»å…ˆåˆ›å»ºç©ºåº“
+        2.æ¢å¤åŸæ¥åº“æ—¶,æ¢å¤åˆ°åŸåº“ä¼šå°†è¡¨ä¸­çš„æ•°æ®è¦†ç›–,æ–°å¢è¡¨ä¸ä¼šåˆ é™¤
+7.æ•°æ®å¯¼å…¥:
+    1.ä½œç”¨:æŠŠæ–‡ä»¶ç³»ç»Ÿå¯¼å…¥åˆ°æ•°æ®åº“è¡¨ä¸­
+    2.è¯­æ³•æ ¼å¼:
+        load data infile "/var/lib/mysql-files/æ–‡ä»¶å" into table è¡¨å fields terminated by "åˆ†éš”ç¬¦" lines terminated by "\n"  
 
+    3.æŠŠscoreTable.csvæ–‡ä»¶å¯¼å…¥åˆ°æ•°æ®åº“è¡¨ä¸­
+        æ­¥éª¤ï¼š1.åœ¨æ•°æ®åº“åˆ›å»ºå¯¹åº”çš„è¡¨
+                create table scoretab(id int,name varchar(20),score float(5,2),phnum char(11),class char(7))charset=utf8;
 
+             2.æŠŠæ–‡ä»¶æ‹·è´åˆ°æ•°æ®åº“çš„æœç´¢è·¯å¾„ä¸­
+                1)æŸ¥çœ‹æœç´¢è·¯å¾„
+                    show variables like "secure_file_priv"; or show variables like "secure_%";  --æ¨¡ç³ŠæŸ¥è¯¢
+                2)æ‹·è´
+                    sudo cp ~/scoreTable.csv  /var/lib/mysql-files/
+                    -æŸ¥çœ‹çš„æ—¶å€™é¦–å…ˆ sufo -i è·å–è¶…çº§ç”¨æˆ·ç®¡ç†æƒé™
+                    -chmod 644 scoreTable.csv
+                
+             3.æ‰§è¡Œæ•°æ®å¯¼å…¥è¯­å¥ 
+                    åŒä¸Šé¢çš„æ ¼å¼
 
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            æ‹“å±•:æŠŠåº“çš„æ ¼å¼æ”¹ä¸ºlatin1
+                alter database MOSHOU charset latin1;
+                åœ¨å‰é¢åŠ ä¸€ä¸ªè‡ªå¢é•¿å­—æ®µ:
+                alter table scoretab add bianhao int(3) zerofill primary key auto_intocrement first;
+8.æ•°æ®å¯¼å‡º:
+    1.ä½œç”¨:å°†æ•°æ®åº“ä¸­æ ‡è®°å½•å¯¼å‡ºåˆ°ç³»ç»Ÿæ–‡ä»¶é‡Œ
+    2.è¯­æ³•æ ¼å¼:
+        select ... from è¡¨å where æ¡ä»¶ into outfile "/var/lib/mysql-files/æ–‡ä»¶å/" fields terminated by "åˆ†éš”ç¬¦" lines terminated by "/n";
+    3.ç¤ºä¾‹:
+        1)æŠŠ sheng è¡¨ä¸­æ‰€æœ‰è®°å½•å¯¼å‡ºæ¥,sheng.csv
+9.mysqlçš„ç”¨æˆ·è´¦æˆ·ç®¡ç†
+    1.å¼€å¯Mysqlè¿œç¨‹è¿æ¥
+        1)sudo -i
+        2)cd /etc/mysql/mysql.conf.d/
+        3)subl mysqld.cnf
+            #bind-address=127.0.0.1 (æœ¬åœ°ç¯å›åœ°å€)
+        4)é‡å¯æœåŠ¡
+            /etc/init.d/mysql restart
+    2.æ·»åŠ ä¸€ä¸ªæˆæƒç”¨æˆ·
+        1)ç”¨rootç”¨æˆ·ç™»å½•mysql
+        2)è¿›è¡Œæˆæƒ
+            mysql> grant æƒé™åˆ—è¡¨ on åº“å.è¡¨å to "ç”¨æˆ·å"@"%" identified by "å¯†ç " with grant option;
+        ã€€æƒé™åˆ—è¡¨: all privileges,select update 
+        ã€€åº“.è¡¨: *.*  åº“å.*
+    3.ç¤ºä¾‹:
+        1.æ·»åŠ æˆæƒç”¨æˆ·tiger,å¯†ç 123,å¯¹æ‰€æœ‰åº“çš„æ‰€æœ‰è¡¨æœ‰æ‰€æœ‰æƒé™
+            grant all on *.* to "tiger"@"%" identified by "123" with grant option;
+        2.æ·»åŠ ç”¨æˆ·rabbit,å¯†ç 123,å¯¹db4åº“æœ‰æ‰€æœ‰æƒé™ 
+            grant select on db4.* to "rabbit"@"%" identified by "123" with grant option;
+    
